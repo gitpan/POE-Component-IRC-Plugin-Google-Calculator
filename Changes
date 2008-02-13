@@ -1,5 +1,9 @@
 Revision history for POE-Component-IRC-Plugin-Google-Calculator
 
+0.02	Tue Feb 12 11:00 2008
+	fixed some documentation discrepancies,
+		no changes in the code
+
 0.01    Tue Feb 12 8:00 2008
         First version, released on an unsuspecting world.
 

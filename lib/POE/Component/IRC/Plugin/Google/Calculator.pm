@@ -7,7 +7,7 @@ use Carp;
 use POE qw(Component::WWW::Google::Calculator);
 use POE::Component::IRC::Plugin qw(:ALL);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
     my $package = shift;
@@ -332,7 +332,7 @@ request. B<Defaults to:> C<[]> (no bans are set).
     ->new( trigger => qr/^calc\s+(?=\S)/i );
 
 B<Optional>. Takes a regex as an argument. Messages matching this
-regex will be considered as requests for validation. See also
+regex will be considered as requests for calculation. See also
 B<addressed> option below which is enabled by default. B<Note:> the
 trigger will be B<removed> from the message, therefore make sure your
 trigger doesn't match the actual data which is ment to be calculated.
@@ -345,7 +345,7 @@ B<Defaults to:> C<qr/^calc\s+(?=\S)/i>
 B<Optional>. Takes either true or false values. When set to a true value
 all the public messages must be I<addressed to the bot>. In other words,
 if your bot's nickname is C<CalcBot> and your trigger is C<qr/^calc/>
-you would request the validation by saying C<CalcBot, calc 2 + 2>.
+you would request the calculation by saying C<CalcBot, calc 2 + 2>.
 When addressed mode is turned on, the bot's nickname, including any
 whitespace and common punctuation character will be removed before
 matching the C<trigger> (see above). When C<addressed> argument it set
