@@ -7,7 +7,7 @@ use Carp;
 use POE qw(Component::WWW::Google::Calculator);
 use POE::Component::IRC::Plugin qw(:ALL);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub new {
     my $package = shift;
@@ -139,7 +139,7 @@ sub _parse_input {
     $what =~ s/^\s+|\s+$//;
 
     return PCI_EAT_NONE
-            unless defined $message;
+            unless length $what;
 
     warn "Matched trigger: [ who => $who, channel => $channel, "
             . "what => $what ]"
