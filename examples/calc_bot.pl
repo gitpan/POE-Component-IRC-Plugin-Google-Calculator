@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use lib '../lib';
+use lib qw(../lib lib);
 sub POE::Kernel::ASSERT_DEFAULT () { 1 }
 use POE qw(Component::IRC  Component::IRC::Plugin::Google::Calculator);
 
@@ -45,6 +45,7 @@ sub _default {
     my @output = ("$event: ");
 
     foreach my $arg ( @$args ) {
+        next unless defined;
         if ( ref $arg eq 'ARRAY' ) {
             push @output, '[' . join ( q| ,|, @$arg ) . ']';
         }

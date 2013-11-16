@@ -7,7 +7,7 @@ use Carp;
 use POE qw(Component::WWW::Google::Calculator);
 use POE::Component::IRC::Plugin qw(:ALL);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new {
     my $package = shift;
@@ -178,7 +178,7 @@ sub _calc_done {
         $response_message = "Result: $in_ref->{out}";
     }
                          
-    $self->{irc}->_send_event( $self->{response_event} => {
+    $self->{irc}->send_event( $self->{response_event} => {
             result => $response_message,
             term   => $in_ref->{term},
             map { $_ => $in_ref->{"_$_"} }
@@ -208,6 +208,8 @@ sub _calc_done {
 1;
 
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
@@ -253,8 +255,6 @@ to Google's calculator via IRC
 
     <Zoffix> CalcBot, calc 2+2
     <CalcBot> Result: 2 + 2 = 4
-    <Zoffix> CalcBot, calc USD in CAD
-    <CalcBot> Result: 1 U.S. dollar = 0.99990001 Canadian dollars
     <Zoffix> CalcBot, calc mile in kilometer
     <CalcBot> Result: 1 mile = 1.609344 kilometer
 
